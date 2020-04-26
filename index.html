@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Etch-A-Sketch</title>
+</head>
+<body>
+ <h1>Etch-A-Sketch</h1>
+ <button id = "newGrid">New Grid</button>
+ <div class="container"></div>   
+
+
+
+
+
+ <script>
+     const container = document.querySelector(".container");
+     document.querySelector("h1").addEventListener("click", (e) => {
+         e.target.style.color = "blue";
+     })
+     function gridMaker(n) {
+         for (let i = 0; i < n * n; i++) {
+            let cell = document.createElement("div");
+             cell.classList.add("gridsquare");
+             container.appendChild(cell);
+         }
+         container.style["grid-template-columns"] = generateGridTemplateString(n);
+         container.style["grid-template-rows"] = generateGridTemplateString(n);
+     }
+     function generateGridTemplateString(numOfColumns) {
+         let stringGridTemplate = ""
+         for (let i = 0; i < numOfColumns; i++) {
+             stringGridTemplate += "auto ";
+         }
+         return stringGridTemplate;
+     }
+     function generateNewGrid() {
+            document.querySelectorAll(".gridsquare").forEach((cell) => cell.remove());
+
+            let gridSize = prompt("How many rows/columns would you like your grid to have?");
+
+            container.style["grid-template-columns"] = generateGridTemplateString(gridSize);
+            container.style["grid-template-rows"] = generateGridTemplateString(gridSize);
+
+            gridMaker(gridSize);
+        }
+     gridMaker(16);
+     const squares = document.querySelectorAll(".gridsquare");
+     squares.forEach((square) => {
+         square.addEventListener("mouseover", (e) => {
+            e.target.style.background = "black";
+         })
+     });
+     const button = document.querySelector("#newGrid");
+     button.addEventListener("click", (e)=> {
+        generateNewGrid();
+        const squares = document.querySelectorAll(".gridsquare");
+            squares.forEach((square) => {
+                square.addEventListener("mouseover", (e) => {
+                    e.target.style.background = "black";
+                })
+            });
+     })
+</script>
+</body>
+</html>

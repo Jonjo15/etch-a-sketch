@@ -1,0 +1,19 @@
+h1 {
+    color: green;
+    text-align: center;
+}
+button {
+  margin-left: 48%;  
+  margin-bottom: 20px;
+}
+.container {
+    border: 1px solid black;
+    height: 960px;
+    width: 960px;
+    display: grid;
+    margin-left: 17.5%;
+
+}
+.gridsquare {
+  border: 0.1px solid gray;
+}
